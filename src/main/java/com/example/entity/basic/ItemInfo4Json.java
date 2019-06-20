@@ -1,0 +1,44 @@
+package com.example.entity.basic;
+
+/**
+ * 创建4Json实体接收氚云传来参数
+ */
+public class ItemInfo4Json {
+
+   private String chuanyunid;
+   private String itemName;
+   private String discription;
+   private String memo;
+
+    public String getChuanyunid() {
+        return chuanyunid;
+    }
+
+    public void setChuanyunid(String chuanyunid) {
+        this.chuanyunid = chuanyunid;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public String getDiscription() {
+        return discription;
+    }
+
+    public void setDiscription(String discription) {
+        this.discription = discription;
+    }
+
+    public String getMemo() {
+        return memo;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
+    }
+}

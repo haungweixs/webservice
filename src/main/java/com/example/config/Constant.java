@@ -10,4 +10,6 @@ public class Constant {
 
     //新增billMaster以及billDetail列表    //新增出入库单据
     public   static  final String  URL_POST_MASTER_INSERT="http://127.0.0.1:8000/wms/bill/masters/insert";
+
+    public static final String URL_POST_ITEMINFO_INSERT="http://127.0.0.1:8000/wms/item/infos/insert";
 }

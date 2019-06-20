@@ -62,6 +62,15 @@ public class ItemInfo {
      */
     private String supplierCode;
 
+    private String chuanyunid;
+
+    public String getChuanyunid() {
+        return chuanyunid;
+    }
+
+    public void setChuanyunid(String chuanyunid) {
+        this.chuanyunid = chuanyunid;
+    }
 
     public Double getDefaultPrice() {
         return defaultPrice;

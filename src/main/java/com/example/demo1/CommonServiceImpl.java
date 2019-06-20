@@ -6,7 +6,9 @@ import com.example.entity.*;
 import com.example.pojo.PinYinUtil;
 import com.example.service.AuditService;
 import com.example.service.impl.AuditServiceImp;
+import com.example.service.wms.ItemManage;
 import com.example.service.wms.WmsService;
+import com.example.service.wms.impl.ItemManageImpl;
 import com.example.service.wms.impl.WmsServiceimp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,6 +27,9 @@ public class CommonServiceImpl implements CommonService {
 
 
     public  static WmsService wmsService=new WmsServiceimp();
+
+    @Autowired
+    public static ItemManage itemManage = new ItemManageImpl();
 
     @Override
     public String GetSchema(String schemaCode) {
@@ -65,6 +70,8 @@ public class CommonServiceImpl implements CommonService {
                 String  json=wmsService.insertWms(param);
             }else if(schemaCode.equals("D001062chuku")&&methodName.equals("master")){
                 String  json=wmsService.intsercome(param);
+            }else if(schemaCode.equals("D001062CPTB")&&methodName.equals("addItemInfo")){
+                String json = itemManage.addItemInfo(param);
             }
             return  "{\"Code\": \"1\",\"Message\": \"调用测试接口成功\"}";
         }catch (Exception e){

@@ -27,10 +27,10 @@ public interface ItemManage {
 
     /**
      * 添加ItemInfo
-     * @param itemInfo
+     * @param param
      * @return
      */
-    String addItemInfo(ItemInfo itemInfo);
+    String addItemInfo(String param);
 
     /**
      *查询ItemInfo列表

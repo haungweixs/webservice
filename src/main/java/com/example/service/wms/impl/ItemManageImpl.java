@@ -1,8 +1,12 @@
 package com.example.service.wms.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.config.Constant;
+import com.example.demo.JacksonHelper;
 import com.example.entity.basic.ItemInfo;
+import com.example.entity.basic.ItemInfo4Json;
 import com.example.entity.basic.ItemType;
+import com.example.entity.chuanyun.ChuanyunBillmaster;
 import com.example.service.wms.ItemManage;
 import com.example.util.RestFul;
 
@@ -77,8 +81,10 @@ public class ItemManageImpl implements ItemManage {
     }
 
     @Override
-    public String addItemInfo(ItemInfo itemInfo) {
-        itemInfo.setAbcClass("B");
+    public String addItemInfo(String param) {
+        ItemInfo itemInfo = new ItemInfo();
+        ItemInfo4Json itemInfo4Json = JacksonHelper.fromJSON(param,ItemInfo4Json.class);
+        itemInfo.setAbcClass("A");
         itemInfo.setBatch("abcd");
         //itemInfo.setCompanyId(112);//不需要设置公司，会自动把当前登录人的CompanyId传过去
         itemInfo.setDefaultPrice(10.0);
@@ -86,16 +92,17 @@ public class ItemManageImpl implements ItemManage {
         itemInfo.setItemBarCode("123123123");
         itemInfo.setItemClass("有打");
         //itemInfo.setItemCode("IM10000021");//自动生成
-        itemInfo.setItemName("打印机001");
+        itemInfo.setItemName(itemInfo4Json.getItemName());
         itemInfo.setItemTypeCode("IT1120145777");
-        itemInfo.setMemo("测试003");
+        itemInfo.setMemo(itemInfo4Json.getMemo());
         itemInfo.setSupplierCode("string");
         itemInfo.setUnitCode("string");
         itemInfo.setUpperLimit(50);
         itemInfo.setWeight("100");
+        itemInfo.setChuanyunid(itemInfo4Json.getChuanyunid());
         String token = RestFul.accToken();
-        String param = JSONObject.toJSONString(itemInfo);
-        String message = RestFul.RestFulToekn("http://127.0.0.1:8000/wms/item/infos/insert", param, token);
+        String item = JSONObject.toJSONString(itemInfo);
+        String message = RestFul.RestFulToekn(Constant.URL_POST_ITEMINFO_INSERT, item, token);
         return message;
     }
 
