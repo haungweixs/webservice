@@ -2,8 +2,11 @@ package com.example.service.impl;
 
 
 import com.example.service.ChuanYunService;
-import com.example.util.SoapUtils;
-import javax.xml.soap.*;
+import com.example.util.HttpRequestUtil;
+import com.example.util.JacksonHelper;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author: jiangbangfa
@@ -13,106 +16,98 @@ import javax.xml.soap.*;
 //@Service价格这个，然后在Controller里面@Autowired注入就行了
 public class ChuanYunServiceImpl implements ChuanYunService {
 
-    //氚云接口地址
-    private final static String COLUD_URL = "https://www.h3yun.com/Webservices/BizObjectService.asmx";
-    private final static String PROTOCOL = SOAPConstants.SOAP_1_1_PROTOCOL;
-    private final static String XMLNS = "http://tempuri.org/";
-    private String soapReq(SOAPElement body){
-        String respResult = null;
-        try {
-            SOAPFactory soapFactory = SOAPFactory.newInstance(PROTOCOL);
-            Name name = soapFactory.createName("Authentication", null, XMLNS);
-            SOAPElement header = soapFactory.createElement(name);
+    private  final static String url="https://www.h3yun.com/OpenApi/Invoke";
 
-            header.addChildElement("EngineCode",null,name.getURI()).addTextNode("ruoiw0zs5za99arpu893tduy3");
-            header.addChildElement("CorpId",null,name.getURI()).addTextNode("ding6cbba9b11be88441");
-            header.addChildElement("Secret",null,name.getURI()).addTextNode("c52+MAYSO5xjaGz5lDnHTgrCOFxeyC9EgMfvhbLgfdnouLy6wFKaSw==");
+    @Override
+    public String LoadBizObject(String SchemaCode, String BizObjectId) {
+        //请求结构体
+        Map<String, String> paramMap = new HashMap<>();
+        paramMap.put("ActionName", "LoadBizObject");
+        paramMap.put("SchemaCode",SchemaCode);
+        paramMap.put("BizObjectId",BizObjectId);
 
-            SOAPMessage soapMessage = SoapUtils.soapReq(PROTOCOL, header, body,COLUD_URL);
-            respResult = soapMessage.getSOAPPart().getEnvelope().getBody().getTextContent();
-        } catch (SOAPException e) {
-            e.printStackTrace();
-        }
-        return respResult;
+        JacksonHelper gson = new JacksonHelper();
+        String json=gson.toJSON(paramMap);
+        System.out.println(json);
+        String result = HttpRequestUtil.sendPost("https://www.h3yun.com/OpenApi/Invoke",gson.toJSON(paramMap));
+        return result;
     }
 
     @Override
-    public String createBizObject(String schemaCode, String objData, boolean submit) throws SOAPException {
-        SOAPFactory soapFactory = SOAPFactory.newInstance(PROTOCOL);
+    public String UpdateBizObject(String SchemaCode, String BizObjectId, String BizObject) {
+        //请求结构体
+        Map<String, String> paramMap = new HashMap<>();
+        paramMap.put("ActionName", "UpdateBizObject");
+        paramMap.put("SchemaCode",SchemaCode);
+        paramMap.put("BizObjectId",BizObjectId);
+        paramMap.put("BizObject",BizObject);
 
-        Name name = soapFactory.createName("CreateBizObject", null, XMLNS);
-        SOAPElement body = soapFactory.createElement(name);
-        body.addChildElement("schemaCode",null,name.getURI()).addTextNode(schemaCode);
-        body.addChildElement("objData",null,name.getURI()).addTextNode(objData);
-        body.addChildElement("submit",null,name.getURI()).addTextNode(submit + "");
-
-        return soapReq(body);
+        JacksonHelper gson = new JacksonHelper();
+        String json=gson.toJSON(paramMap);
+        System.out.println(json);
+        String result = HttpRequestUtil.sendPost("https://www.h3yun.com/OpenApi/Invoke",gson.toJSON(paramMap));
+        return result;
     }
 
     @Override
-    public String createBizObjects(String schemaCode, String[] objDatas, boolean submit) throws SOAPException {
-        SOAPFactory soapFactory = SOAPFactory.newInstance(PROTOCOL);
+    public String LoadBizObjects(String SchemaCode, String Filter) {
+        //请求结构体
+        Map<String, String> paramMap = new HashMap<>();
+        paramMap.put("ActionName", "LoadBizObjects");
+        paramMap.put("SchemaCode",SchemaCode);
+        paramMap.put("Filter",Filter);
 
-        Name name = soapFactory.createName("CreateBizObjects", null, XMLNS);
-        SOAPElement body = soapFactory.createElement(name);
-        body.addChildElement("schemaCode",null,name.getURI()).addTextNode(schemaCode);
-        SOAPElement objDatasEle = body.addChildElement("objDatas",null,name.getURI());
-        if(objDatas != null){
-            for (String objData : objDatas) {
-                objDatasEle.addChildElement("string",null,name.getURI()).addTextNode(objData);
-            }
-        }
-        body.addChildElement("submit",null,name.getURI()).addTextNode(submit + "");
-
-        return soapReq(body);
+        JacksonHelper gson = new JacksonHelper();
+        String json=gson.toJSON(paramMap);
+        System.out.println(json);
+        String result = HttpRequestUtil.sendPost("https://www.h3yun.com/OpenApi/Invoke",gson.toJSON(paramMap));
+        return result;
     }
 
     @Override
-    public String loadBizObject(String schemaCode, String objectId) throws SOAPException {
-        SOAPFactory soapFactory = SOAPFactory.newInstance(PROTOCOL);
+    public String CreateBizObject(String SchemaCode, String BizObject, String IsSubmit) {
+        //请求结构体
+        Map<String, String> paramMap = new HashMap<>();
+        paramMap.put("ActionName", "CreateBizObject");
+        paramMap.put("SchemaCode",SchemaCode);
+        paramMap.put("BizObject",BizObject);
+        paramMap.put("IsSubmit",IsSubmit);
 
-        Name name = soapFactory.createName("LoadBizObject", null, XMLNS);
-        SOAPElement body = soapFactory.createElement(name);
-        body.addChildElement("schemaCode",null,name.getURI()).addTextNode(schemaCode);
-        body.addChildElement("objectId",null,name.getURI()).addTextNode(objectId);
-
-        return soapReq(body);
+        JacksonHelper gson = new JacksonHelper();
+        String json=gson.toJSON(paramMap);
+        System.out.println(json);
+        String result = HttpRequestUtil.sendPost("https://www.h3yun.com/OpenApi/Invoke",gson.toJSON(paramMap));
+        return result;
     }
 
     @Override
-    public String loadBizObjects(String schemaCode, String filterStr) throws SOAPException {
-        SOAPFactory soapFactory = SOAPFactory.newInstance(PROTOCOL);
+    public String CreateBizObjects(String SchemaCode, String BizObjectArray, String IsSubmit) {
+        Map<String, String> paramMap = new HashMap<>();
+        paramMap.put("ActionName", "CreateBizObjects");
+        paramMap.put("SchemaCode",SchemaCode);
+        paramMap.put("BizObjectArray",BizObjectArray);
+        paramMap.put("IsSubmit",IsSubmit);
 
-        Name name = soapFactory.createName("LoadBizObjects", null, XMLNS);
-        SOAPElement body = soapFactory.createElement(name);
-        body.addChildElement("schemaCode",null,name.getURI()).addTextNode(schemaCode);
-        body.addChildElement("filterStr",null,name.getURI()).addTextNode(filterStr);
-
-        return soapReq(body);
+        JacksonHelper gson = new JacksonHelper();
+        String json=gson.toJSON(paramMap);
+        System.out.println(json);
+        String result = HttpRequestUtil.sendPost("https://www.h3yun.com/OpenApi/Invoke",gson.toJSON(paramMap));
+        return result;
     }
 
     @Override
-    public String removeBizObject(String schemaCode, String objectId) throws SOAPException {
-        SOAPFactory soapFactory = SOAPFactory.newInstance(PROTOCOL);
+    public String RemoveBizObject(String SchemaCode, String BizObjectId) {
+        Map<String, String> paramMap = new HashMap<>();
+        paramMap.put("ActionName", "CreateBizObjects");
+        paramMap.put("SchemaCode",SchemaCode);
+        paramMap.put("BizObjectId",BizObjectId);
 
-        Name name = soapFactory.createName("RemoveBizObject", null, XMLNS);
-        SOAPElement body = soapFactory.createElement(name);
-        body.addChildElement("schemaCode",null,name.getURI()).addTextNode(schemaCode);
-        body.addChildElement("objectId",null,name.getURI()).addTextNode(objectId);
-
-        return soapReq(body);
+        JacksonHelper gson = new JacksonHelper();
+        String json=gson.toJSON(paramMap);
+        System.out.println(json);
+        String result = HttpRequestUtil.sendPost("https://www.h3yun.com/OpenApi/Invoke",gson.toJSON(paramMap));
+        return result;
     }
 
-    @Override
-    public String updateBizObject(String schemaCode, String objData, String objectId) throws SOAPException {
-        SOAPFactory soapFactory = SOAPFactory.newInstance(PROTOCOL);
 
-        Name name = soapFactory.createName("UpdateBizObject", null, XMLNS);
-        SOAPElement body = soapFactory.createElement(name);
-        body.addChildElement("schemaCode",null,name.getURI()).addTextNode(schemaCode);
-        body.addChildElement("objData",null,name.getURI()).addTextNode(objData);
-        body.addChildElement("objectId",null,name.getURI()).addTextNode(objectId);
-
-        return soapReq(body);
-    }
 }

@@ -5,7 +5,6 @@ import com.example.entity.kuaidix;
 import com.example.service.ChuanYunService;
 import com.example.service.impl.ChuanYunServiceImpl;
 import com.example.util.MD5;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.soap.SOAPException;
 import java.util.HashMap;
@@ -57,7 +56,7 @@ public class Query {
 				System.out.println(d.getContext());
 				System.out.println(d.getTime());
 				System.out.println(objectid);
-				String  massage=chuanYunService.createBizObject("D001062test001","{F0000001:'"+d.getTime()+"',F0000004:'"+d.getContext()+"',F0000005:'"+objectid+"'}",true);
+				String  massage=chuanYunService.CreateBizObject("D001062test001","{F0000001:'"+d.getTime()+"',F0000004:'"+d.getContext()+"',F0000005:'"+objectid+"'}","true");
 			}
 			return duxi;
 		} catch (Exception e) {
@@ -71,7 +70,6 @@ public class Query {
 		ChuanYunService chuanYunService=new ChuanYunServiceImpl();
 //		String  json=chuanYunService.loadBizObject("D001062chuku","51da85d8-935f-491d-a56c-d5665ec1b6bc");
 //		String  json=chuanYunService.updateBizObject("bff0c6ozpa26by0rqj16eh7i1","{F0000159:'已出库'}","65fc4600-000d-4aaa-aaa5-9be603eabcf7");
-		String  json=chuanYunService.loadBizObjects("bff0c6ozpa26by0rqj16eh7i1","{\"FromRowNum\":-1,\"ToRowNum\":1000,\"Matcher\":{\"Type\":\"And\",\"Matchers\":[{\"Type\":\"And\",\"Matchers\":[{\"Type\":\"Item\",\"Name\":\"SeqNo\",\"Operator\":8,\"Value\":\"DZ20190410002\"}]},]},\"SortByCollection\":[],\"RequireCount\":false}");
-		System.out.println(json);
+
 	}
 }
