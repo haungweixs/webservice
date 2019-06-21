@@ -34,6 +34,7 @@ public class CommonServiceImpl implements CommonService {
     @Autowired
     public static ItemManage itemManage = new ItemManageImpl();
 
+    //
     public  static UnitService unitService=new UnitServiceImp();
 
     @Override
