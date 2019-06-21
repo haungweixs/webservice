@@ -6,10 +6,6 @@ package com.example.entity.chuanyun;
  */
 public class ChuanyunBilldetail {
      /**
-     * 物料编码
-     */
-    private   String  material;
-     /**
      * 入库数量
      */
     private   Integer  quantity;
@@ -33,6 +29,16 @@ public class ChuanyunBilldetail {
      * 氚云出库子表id
      */
     private  String  appearid;
+
+    private String  cyItemCode;
+
+    public String getCyItemCode() {
+        return cyItemCode;
+    }
+
+    public void setCyItemCode(String cyItemCode) {
+        this.cyItemCode = cyItemCode;
+    }
 
     public String getEnterid() {
         return enterid;
@@ -64,14 +70,6 @@ public class ChuanyunBilldetail {
 
     public void setChaunyunid(String chaunyunid) {
         this.chaunyunid = chaunyunid;
-    }
-
-    public String getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(String material) {
-        this.material = material;
     }
 
     public Integer getQuantity() {

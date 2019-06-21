@@ -29,6 +29,19 @@ public class Unit {
     private Integer companyId;
 
     /**
+     * 氚云商品objid
+     * */
+    private  String chuanyunId;
+
+    public String getChuanyunId() {
+        return chuanyunId;
+    }
+
+    public void setChuanyunId(String chuanyunId) {
+        this.chuanyunId = chuanyunId;
+    }
+
+    /**
      * 获取单位id
      *
      * @return unit_id - 单位id

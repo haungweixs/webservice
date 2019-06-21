@@ -120,7 +120,7 @@ public class RestFul {
 
 
 
-    public  static   String  RestFulToekn(String targetURl,String input,String token){
+    public  static   String  RestFulPostToekn(String targetURl,String input,String token){
         try {
             URL restServiceURL = new URL(targetURl);
             HttpURLConnection httpConnection = (HttpURLConnection) restServiceURL.openConnection();

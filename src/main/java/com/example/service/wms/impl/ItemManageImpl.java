@@ -61,7 +61,7 @@ public class ItemManageImpl implements ItemManage {
         String token = RestFul.accToken();
         String param = JSONObject.toJSONString(itemType);
         System.out.println(param);
-        String message = RestFul.RestFulToekn("http://127.0.0.1:8000/wms/item/types/insert", param, token);
+        String message = RestFul.RestFulPostToekn("http://127.0.0.1:8000/wms/item/types/insert", param, token);
         System.out.println(message);
         return message;
     }
@@ -76,7 +76,7 @@ public class ItemManageImpl implements ItemManage {
         itemType.setMemo("2019.04.17更新");
         String token = RestFul.accToken();
         String param = JSONObject.toJSONString(itemType);
-        String message = RestFul.RestFulToekn("http://127.0.0.1:8000/wms/item/types/update", param, token);
+        String message = RestFul.RestFulPostToekn("http://127.0.0.1:8000/wms/item/types/update", param, token);
         return message;
     }
 
@@ -102,7 +102,7 @@ public class ItemManageImpl implements ItemManage {
         itemInfo.setChuanyunid(itemInfo4Json.getChuanyunid());
         String token = RestFul.accToken();
         String item = JSONObject.toJSONString(itemInfo);
-        String message = RestFul.RestFulToekn(Constant.URL_POST_ITEMINFO_INSERT, item, token);
+        String message = RestFul.RestFulPostToekn(Constant.URL_POST_ITEMINFO_INSERT, item, token);
         return message;
     }
 
@@ -132,7 +132,7 @@ public class ItemManageImpl implements ItemManage {
         String token = RestFul.accToken();
         String param = JSONObject.toJSONString(itemInfo);
         System.out.println(param + "--" + token);
-        String message = RestFul.RestFulToekn("http://127.0.0.1:8000/wms/item/infos/update", param, token);
+        String message = RestFul.RestFulPostToekn("http://127.0.0.1:8000/wms/item/infos/update", param, token);
         System.out.println(message);
         return message;
     }

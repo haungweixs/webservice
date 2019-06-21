@@ -44,7 +44,7 @@ public class WmsServiceimp implements WmsService {
             dui.setDetailNo(detailNo);   //单据详情编号
             dui.setBillNo(detailNo);    //单据单号
             dui.setEnterid(c.getEnterid()); //入库子表id
-            dui.setItemCode(c.getMaterial());      //物料编码
+            dui.setCyItemCode(c.getCyItemCode());      //物料编码 氚云格式
             dui.setQuantity(c.getQuantity());  //当前入库数量
             dui.setState(1);  //1-初始化；2-已经验收；3-已经上架
             dui.setAddTime(d); //添加时间
@@ -75,7 +75,7 @@ public class WmsServiceimp implements WmsService {
         sdbn.setBillMaster(dxs);
         String js= JSONObject.toJSONString(sdbn);
         System.out.println(RestFul.accToken());
-        String  shjdbded=RestFul.RestFulToekn(Constant.URL_POST_MASTER_INSERT,js,RestFul.accToken());
+        String  shjdbded=RestFul.RestFulPostToekn(Constant.URL_POST_MASTER_INSERT,js,RestFul.accToken());
         System.out.println(shjdbded);
         return shjdbded;
     }
@@ -102,7 +102,7 @@ public class WmsServiceimp implements WmsService {
             dui.setDetailNo(detailNo);   //单据详情编号
             dui.setBillNo(detailNo);    //单据单号
             dui.setAppearid(c.getAppearid());
-            dui.setItemCode(c.getMaterial());      //物料编码
+            dui.setCyItemCode(c.getCyItemCode());      //物料编码  氚云格式
             dui.setQuantity(c.getQuantity());  //当前出库数量
             dui.setState(1);  //1-初始化；2-已经验收；3-已经上架
             dui.setAddTime(d); //添加时间
@@ -132,7 +132,7 @@ public class WmsServiceimp implements WmsService {
         sdbn.setBillDetails(sdni);
         sdbn.setBillMaster(dxs);
         String js= JSONObject.toJSONString(sdbn);
-        String  shjdbded=RestFul.RestFulToekn(Constant.URL_POST_MASTER_INSERT,js,RestFul.accToken());
+        String  shjdbded=RestFul.RestFulPostToekn(Constant.URL_POST_MASTER_INSERT,js,RestFul.accToken());
         System.out.println(shjdbded);
         return shjdbded;
     }

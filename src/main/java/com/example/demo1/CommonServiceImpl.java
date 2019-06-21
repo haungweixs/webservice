@@ -1,11 +1,14 @@
 package com.example.demo1;
 
+import com.alibaba.fastjson.JSON;
 import com.example.demo.JacksonHelper;
 import com.example.demo.Query;
 import com.example.entity.*;
 import com.example.pojo.PinYinUtil;
 import com.example.service.AuditService;
+import com.example.service.UnitService;
 import com.example.service.impl.AuditServiceImp;
+import com.example.service.impl.UnitServiceImp;
 import com.example.service.wms.ItemManage;
 import com.example.service.wms.WmsService;
 import com.example.service.wms.impl.ItemManageImpl;
@@ -31,6 +34,8 @@ public class CommonServiceImpl implements CommonService {
     @Autowired
     public static ItemManage itemManage = new ItemManageImpl();
 
+    public  static UnitService unitService=new UnitServiceImp();
+
     @Override
     public String GetSchema(String schemaCode) {
         System.out.println(schemaCode);
@@ -52,6 +57,7 @@ public class CommonServiceImpl implements CommonService {
     public String Invoke(String userCode, String schemaCode, String methodName, String param) {
         System.out.println(param);
         try {
+            String  json="";
             if(schemaCode.equals("D001062htkp")&& methodName.equals("Getexpress")){
                 Query  dui=new Query();
                 JxiDhl jxiDhl=JacksonHelper.fromJSON(param,JxiDhl.class);
@@ -61,18 +67,19 @@ public class CommonServiceImpl implements CommonService {
                 System.out.println(com);
                 kuaidix  kd=dui.fanhuineiro(num,com,objectid);
             }else if(schemaCode.equals("D001062cost")&&methodName.equals("Auditr")){
-                System.out.println(param);
-                Cost  jxiDhl= JacksonHelper.fromJSON(param,Cost.class);
-                String  token=auditService.accessToken();
-                String  sdd=auditService.createAudit(token,jxiDhl);
-                System.out.println(sdd);
+                     Cost  jxiDhl= JacksonHelper.fromJSON(param,Cost.class);
+                     String  token=auditService.accessToken();
+                     json =auditService.createAudit(token,jxiDhl);
             }else if(schemaCode.equals("sf3g327087wkcxxo45d9zqu77")&&methodName.equals("library")){
-                String  json=wmsService.insertWms(param);
+                     json=wmsService.insertWms(param);
             }else if(schemaCode.equals("D001062chuku")&&methodName.equals("master")){
-                String  json=wmsService.intsercome(param);
+                     json=wmsService.intsercome(param);
             }else if(schemaCode.equals("D001062CPTB")&&methodName.equals("addItemInfo")){
-                String json = itemManage.addItemInfo(param);
+                     json = itemManage.addItemInfo(param);
+            }else if(schemaCode.equals("Unit")&&methodName.equals("master")){
+                     json =unitService.UnitSave(param);
             }
+            System.out.println(json);
             return  "{\"Code\": \"1\",\"Message\": \"调用测试接口成功\"}";
         }catch (Exception e){
             System.out.println(e);

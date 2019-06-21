@@ -79,6 +79,16 @@ public class BillDetail {
 
     private  String  enterid;
 
+    private String  cyItemCode;
+
+    public String getCyItemCode() {
+        return cyItemCode;
+    }
+
+    public void setCyItemCode(String cyItemCode) {
+        this.cyItemCode = cyItemCode;
+    }
+
     public String getAppearid() {
         return appearid;
     }
