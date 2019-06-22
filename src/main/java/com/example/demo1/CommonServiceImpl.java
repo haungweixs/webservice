@@ -1,5 +1,6 @@
 package com.example.demo1;
 
+import com.alibaba.fastjson.JSON;
 import com.example.demo.JacksonHelper;
 import com.example.demo.Query;
 import com.example.entity.*;
@@ -9,8 +10,12 @@ import com.example.service.UnitService;
 import com.example.service.impl.AuditServiceImp;
 import com.example.service.impl.UnitServiceImp;
 import com.example.service.wms.ItemManage;
+import com.example.service.wms.ItemeasServer;
+import com.example.service.wms.WareInfoServer;
 import com.example.service.wms.WmsService;
 import com.example.service.wms.impl.ItemManageImpl;
+import com.example.service.wms.impl.ItemeasServerimpl;
+import com.example.service.wms.impl.WareInfoServerImpl;
 import com.example.service.wms.impl.WmsServiceimp;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +33,16 @@ public class CommonServiceImpl implements CommonService {
     @Autowired
     public static AuditService auditService = new AuditServiceImp();
 
-
     public static WmsService wmsService = new WmsServiceimp();
 
     @Autowired
     public static ItemManage itemManage = new ItemManageImpl();
 
-    //
     public static UnitService unitService = new UnitServiceImp();
+
+    public WareInfoServer wareInfoServer=new WareInfoServerImpl();
+
+    public ItemeasServer itemeasServer=new ItemeasServerimpl();
 
     @Override
     public String GetSchema(String schemaCode) {
@@ -87,6 +94,12 @@ public class CommonServiceImpl implements CommonService {
             } else if (schemaCode.equals("D001062class") && methodName.equals("addItemType")) {
                 System.out.println("添加商品二级分类");
                 json = itemManage.addItemType(param);
+
+
+            }else if (schemaCode.equals("D000030SCMWareHouse")&&methodName.equals("wareif")){
+                     json=wareInfoServer.saveWareInfo(param);
+            }else if(schemaCode.equals("igsscmdh48fs3tl5xqrxx4tw0")&&methodName.equals("item")){
+                     json=itemeasServer.ItemasSave(param);
             }
             System.out.println("打印返回结果：" + json);
             return "{\"Code\": \"1\",\"Message\": \"调用测试接口成功\"}";
@@ -94,11 +107,6 @@ public class CommonServiceImpl implements CommonService {
             System.out.println(e);
             return "{\"Code\": \"-1\",\"Message\": \"调用测试接口失败\"}";
         }
-    }
-
-    public static void main(String[] args) {
-//        CommonService commonService = new CommonServiceImpl();
-//        commonService.Invoke("", "D001062CPTB", "addItemInfo", "{\"chuanyunid\":\"975c6854-2b79-4573-bfda-5df063a1b9c3\",\"itemName\":\"测试商品\",\"discription\":\"测试数据\",\"memo\":\"测试数据\",\"itemMainType\":\"dbd1f4d6-5df4-498c-8e24-bf056ec8bd95\",\"itemType\":\"fa3554c1-66e5-40af-99bc-89ba74c9e14c\",\"unit\":\"55a8553a-89c5-4d69-8660-05af8f4637bd\",\"brand\":\"76e9be11-2c44-4f6d-9ea2-4627e0b71ac7\"}");
     }
 }
 

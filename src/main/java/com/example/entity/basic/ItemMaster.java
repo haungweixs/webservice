@@ -38,6 +38,16 @@ public class ItemMaster {
      */
     private String createTime;
 
+    private  String chuanyunid;
+
+    public String getChuanyunid() {
+        return chuanyunid;
+    }
+
+    public void setChuanyunid(String chuanyunid) {
+        this.chuanyunid = chuanyunid;
+    }
+
     public String getCreateTime() {
         return createTime;
     }

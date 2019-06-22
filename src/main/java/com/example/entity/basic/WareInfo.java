@@ -1,11 +1,9 @@
 package com.example.entity.basic;
 
-
 public class WareInfo {
     /**
      * 仓库ID
      */
-
     private Integer wareId;
 
     /**
@@ -33,6 +31,20 @@ public class WareInfo {
      * 公司ID
      */
     private Integer companyId;
+
+    /**
+     * 氚云id
+     * */
+    private  String  chaunyunid;
+
+    public String getChaunyunid() {
+        return chaunyunid;
+    }
+
+    public void setChaunyunid(String chaunyunid) {
+        this.chaunyunid = chaunyunid;
+    }
+
     /**
      * 获取仓库ID
      *

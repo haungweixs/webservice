@@ -25,6 +25,26 @@ public class ChuanyunBillmaster {
     private   String addtime;
     private    String mold;
     private   String  chaunyunid;
+    private  String  cyWareCode;
+
+    private  String  cyItemmaster;
+
+    public String getCyWareCode() {
+        return cyWareCode;
+    }
+
+    public void setCyWareCode(String cyWareCode) {
+        this.cyWareCode = cyWareCode;
+    }
+
+    public String getCyItemmaster() {
+        return cyItemmaster;
+    }
+
+    public void setCyItemmaster(String cyItemmaster) {
+        this.cyItemmaster = cyItemmaster;
+    }
+
     //入库id
     private String cyenterid;
     //出库id

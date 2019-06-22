@@ -60,6 +60,27 @@ public class BillMaster {
     private String checkTime;
     private String taskTime;
     private String acceptTime;
+
+    private  String  cyWareCode;
+
+    private  String  cyItemmaster;
+
+    public String getCyWareCode() {
+        return cyWareCode;
+    }
+
+    public void setCyWareCode(String cyWareCode) {
+        this.cyWareCode = cyWareCode;
+    }
+
+    public String getCyItemmaster() {
+        return cyItemmaster;
+    }
+
+    public void setCyItemmaster(String cyItemmaster) {
+        this.cyItemmaster = cyItemmaster;
+    }
+
     /**
      * 1-初始化 2-审核 3-作业中 4-完成
      */

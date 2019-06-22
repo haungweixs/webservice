@@ -20,5 +20,14 @@ public class Constant {
     //新增单位表
     public  static  final  String  UNIT_POST_INSERT="http://127.0.0.1:8000/wms/units/insert";
 
+    //新增仓库表
+    public   static  final  String  WAREINFO_INSERT="http://127.0.0.1:8000/wms/ware/infos/insert";
+
+    //新增货主表
+    public   static  final   String ITEMASTER_INSERT="http://127.0.0.1:8000/wms/item/masters/insert";
+
+
+    //新增品牌
     public static final String URL_POST_BRAND_INSERT="http://127.0.0.1:8000/wms/brands/insert";
+
 }

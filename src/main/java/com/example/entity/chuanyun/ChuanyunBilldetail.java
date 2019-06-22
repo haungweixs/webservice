@@ -32,6 +32,26 @@ public class ChuanyunBilldetail {
 
     private String  cyItemCode;
 
+    private  String  cyWareCode;
+
+    private  String  cyItemmaster;
+
+    public String getCyWareCode() {
+        return cyWareCode;
+    }
+
+    public void setCyWareCode(String cyWareCode) {
+        this.cyWareCode = cyWareCode;
+    }
+
+    public String getCyItemmaster() {
+        return cyItemmaster;
+    }
+
+    public void setCyItemmaster(String cyItemmaster) {
+        this.cyItemmaster = cyItemmaster;
+    }
+
     public String getCyItemCode() {
         return cyItemCode;
     }

@@ -13,6 +13,15 @@ public class ItemInfo4Json {
     private String itemType;
     private String unit;
     private String brand;
+    private String itemClass;
+
+    public String getItemClass() {
+        return itemClass;
+    }
+
+    public void setItemClass(String itemClass) {
+        this.itemClass = itemClass;
+    }
 
     public String getMainType() {
         return mainType;
