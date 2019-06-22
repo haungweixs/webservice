@@ -74,4 +74,27 @@ public interface ItemManage {
      */
     String updateItemType(ItemType itemType);
 
+    /**
+     * 添加物料主分类
+     * @param param
+     * @return
+     */
+    String addMainType(String param);
+
+    /**
+     * 添加商品二级分类
+     * @param param
+     * @return
+     */
+    String addItemType(String param);
+
+    /**
+     * 添加品牌
+     * @param param
+     * @return
+     */
+    String addBrand(String param);
+
+
+
 }

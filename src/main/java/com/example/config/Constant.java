@@ -13,6 +13,12 @@ public class Constant {
 
     public static final String URL_POST_ITEMINFO_INSERT="http://127.0.0.1:8000/wms/item/infos/insert";
 
+    public static  final String URL_POST_ITEMMAINTYPE_INSERT="http://127.0.0.1:8000/wms/item/maintypes/insert";
+
+    public static final String URL_POST_ITEMTYPE_INSERT="http://127.0.0.1:8000/wms/item/types/insert";
+
     //新增单位表
     public  static  final  String  UNIT_POST_INSERT="http://127.0.0.1:8000/wms/units/insert";
+
+    public static final String URL_POST_BRAND_INSERT="http://127.0.0.1:8000/wms/brands/insert";
 }

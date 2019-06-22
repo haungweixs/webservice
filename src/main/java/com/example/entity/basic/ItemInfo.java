@@ -4,6 +4,68 @@ package com.example.entity.basic;
 public class ItemInfo {
     private Integer id;
 
+
+    private String chuanyunid;
+
+    private String brand;
+
+    private String mainType;
+
+    private String discription;
+
+    private String itemType;
+
+    private String unit;
+
+
+    public String getChuanyunid() {
+        return chuanyunid;
+    }
+
+    public void setChuanyunid(String chuanyunid) {
+        this.chuanyunid = chuanyunid;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getMainType() {
+        return mainType;
+    }
+
+    public void setMainType(String mainType) {
+        this.mainType = mainType;
+    }
+
+    public String getDiscription() {
+        return discription;
+    }
+
+    public void setDiscription(String discription) {
+        this.discription = discription;
+    }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
     private String itemCode;
 
     /** batch
@@ -62,15 +124,6 @@ public class ItemInfo {
      */
     private String supplierCode;
 
-    private String chuanyunid;
-
-    public String getChuanyunid() {
-        return chuanyunid;
-    }
-
-    public void setChuanyunid(String chuanyunid) {
-        this.chuanyunid = chuanyunid;
-    }
 
     public Double getDefaultPrice() {
         return defaultPrice;

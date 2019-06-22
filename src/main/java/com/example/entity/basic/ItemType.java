@@ -14,6 +14,27 @@ public class ItemType {
 
     private String  memo;
 
+    private String chuanyunid;
+
+    private String mainType;
+
+
+    public String getChuanyunid() {
+        return chuanyunid;
+    }
+
+    public void setChuanyunid(String chuanyunid) {
+        this.chuanyunid = chuanyunid;
+    }
+
+    public String getMainType() {
+        return mainType;
+    }
+
+    public void setMainType(String mainType) {
+        this.mainType = mainType;
+    }
+
     /**
      * @return item_type_id
      */
