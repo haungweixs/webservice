@@ -4,7 +4,6 @@ package com.example.entity.basic;
 public class ItemInfo {
     private Integer id;
 
-
     private String chuanyunid;
 
     private String brand;
@@ -16,6 +15,37 @@ public class ItemInfo {
     private String itemType;
 
     private String unit;
+
+    /**
+     * 物料类型编码
+     */
+    private String itemTypeCode;
+
+    /**
+     * 上限
+     */
+    private Integer upperLimit;
+
+    /**
+     * 下限
+     */
+    private Integer floorLimit;
+
+    /**
+     * 备注
+     */
+    private String memo;
+    /**
+     * 公司ID
+     */
+    private  Integer companyId;
+
+
+    /**
+     * ABC分类
+     */
+    private String  abcClass;
+
 
 
     public String getChuanyunid() {
@@ -39,7 +69,13 @@ public class ItemInfo {
     }
 
     public void setMainType(String mainType) {
-        this.mainType = mainType;
+        if(mainType!=null){
+            this.mainType = mainType;
+        }else{
+            mainType="123";
+        }
+
+
     }
 
     public String getDiscription() {
@@ -73,6 +109,13 @@ public class ItemInfo {
      */
     private String itemBarCode;
 
+
+
+    /**
+     * 批次
+     */
+    private String batch;
+
     public String getBatch() {
         return batch;
     }
@@ -81,11 +124,6 @@ public class ItemInfo {
         this.batch = batch;
     }
 
-    /**
-     * 批次
-     */
-
-    private String batch;
     /**
      * 物料名称
      */
@@ -149,62 +187,43 @@ public class ItemInfo {
         this.supplierCode = supplierCode;
     }
 
-    public String getClientCode() {
-        return clientCode;
-    }
-
-    public void setClientCode(String clientCode) {
-        this.clientCode = clientCode;
-    }
-
-    public String getInternalCode() {
-        return internalCode;
-    }
-
-    public void setInternalCode(String internalCode) {
-        this.internalCode = internalCode;
-    }
-
     /**
 
      * 客户编码
      */
     private String clientCode;
+    public String getClientCode() {
+        return clientCode;
+    }
 
+    public void setClientCode(String clientCode) {
+        if(clientCode!=null){
+            this.clientCode = clientCode;
+        }else{
+            clientCode="123456";
+        }
+
+
+    }
     /**
      * 内部编码
      */
     private String internalCode;
+    public String getInternalCode() {
+        return internalCode;
+    }
 
-    /**
-     * 物料类型编码
-     */
-    private String itemTypeCode;
-
-    /**
-     * 上限
-     */
-    private Integer upperLimit;
-
-    /**
-     * 下限
-     */
-    private Integer floorLimit;
-
-    /**
-     * 备注
-     */
-    private String memo;
-    /**
-     * 公司ID
-     */
-    private  Integer companyId;
+    public void setInternalCode(String internalCode) {
+        if(internalCode !=null){
+            this.internalCode = internalCode;
+        }else{
+            internalCode="123456";
+        }
+    }
 
 
-    /**
-     * ABC分类
-     */
-    private String  abcClass;
+
+
 
 
     public String getAbcClass() {

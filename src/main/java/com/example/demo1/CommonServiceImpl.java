@@ -95,11 +95,13 @@ public class CommonServiceImpl implements CommonService {
                 System.out.println("添加商品二级分类");
                 json = itemManage.addItemType(param);
 
-
             }else if (schemaCode.equals("D000030SCMWareHouse")&&methodName.equals("wareif")){
                      json=wareInfoServer.saveWareInfo(param);
             }else if(schemaCode.equals("igsscmdh48fs3tl5xqrxx4tw0")&&methodName.equals("item")){
                      json=itemeasServer.ItemasSave(param);
+            } else if (schemaCode.equals("D001062inventory")&&methodName.equals("getItemCount")){
+                    Integer temp = itemManage.queryItemCount(param);
+                    json = temp.toString();
             }
             System.out.println("打印返回结果：" + json);
             return "{\"Code\": \"1\",\"Message\": \"调用测试接口成功\"}";

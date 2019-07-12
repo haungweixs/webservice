@@ -95,6 +95,11 @@ public interface ItemManage {
      */
     String addBrand(String param);
 
-
+    /**
+     * 查询库存
+     * @param param
+     * @return
+     */
+    int queryItemCount(String param);
 
 }

@@ -85,8 +85,8 @@ public class HttpRequest {
 	/**
 	 * 组装http请求参数
 	 * 
-	 * @param params
-	 * @param menthod
+	 * @param
+	 * @param
 	 * @return
 	 */
 	private synchronized static NameValuePair[] assembleRequestParams(Map<String, String> data) {

@@ -3,8 +3,10 @@ package com.example.service.wms.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.example.config.Constant;
 import com.example.demo.JacksonHelper;
+import com.example.demo1.ItemCountQueryBackToCy;
 import com.example.entity.basic.*;
 import com.example.entity.chuanyun.ChuanyunBillmaster;
+import com.example.service.impl.ChuanYunServiceImpl;
 import com.example.service.wms.ItemManage;
 import com.example.util.RestFul;
 
@@ -190,8 +192,35 @@ public class ItemManageImpl implements ItemManage {
         return result;
     }
 
+    @Override
+    public int queryItemCount(String param) {
+         ItemInventory itemInventory  = JacksonHelper.fromJSON(param,ItemInventory.class);
+         String itemObjectid = itemInventory.getItemObjectid();
+         String objectid = itemInventory.getObjectid();
+        //通过氚云产品objectid获取产品的code
+         String input = "?chuanyunid="+itemObjectid;
+         String message = RestFul.RestFulGet(Constant.URL_GET_ITEMINFOBYCYID_SELECT,input);
+
+         Result result = JacksonHelper.fromJSON(message,Result.class);
+
+        ItemInfo itemInfo = result.getData();
+
+         //通过itemCode获取到产品的库存数量
+        String itemCode = itemInfo.getItemCode();
+        System.out.println(itemCode);
+         String input1 = "?itemCode="+itemCode;
+         String message1 = RestFul.RestFulGet(Constant.URL_GET_INVENTORY_SELECT,input1);
+         Result1 result1 = JacksonHelper.fromJSON(message1,Result1.class);
+         Integer count = result1.getData().getQuantity();
+         String temp = count.toString();
+        ItemCountQueryBackToCy.backToCy(temp,objectid);
+        return count;
+    }
+
     public static void main(String[] args) {
         ItemManageImpl itemManage = new ItemManageImpl();
+        //int count = itemManage.queryItemCount("{\"itemObjectid\":\"975c6854-2b79-4573-bfda-5df063a1b9c3\"}");
+
         //itemManage.deleteItemInfo("IM22150834");
 
         // itemManage.addItemInfo(new ItemInfo());
