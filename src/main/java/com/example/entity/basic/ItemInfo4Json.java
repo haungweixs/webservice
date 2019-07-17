@@ -14,6 +14,15 @@ public class ItemInfo4Json {
     private String unit;
     private String brand;
     private String itemClass;
+    private String shortName;
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
 
     public String getItemClass() {
         return itemClass;

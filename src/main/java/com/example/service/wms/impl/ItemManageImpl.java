@@ -127,7 +127,7 @@ public class ItemManageImpl implements ItemManage {
         itemInfo.setBatch("abcd");
         //itemInfo.setCompanyId(112);//不需要设置公司，会自动把当前登录人的CompanyId传过去
         itemInfo.setDefaultPrice(10.0);
-
+        itemInfo.setItemShortName(itemInfo4Json.getShortName());
         itemInfo.setItemBarCode("123123123");
         itemInfo.setItemClass(itemInfo4Json.getItemClass());
         //itemInfo.setItemCode("IM10000021");//自动生成

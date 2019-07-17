@@ -162,6 +162,15 @@ public class ItemInfo {
      */
     private String supplierCode;
 
+    private String itemShortName;
+
+    public String getItemShortName() {
+        return itemShortName;
+    }
+
+    public void setItemShortName(String itemShortName) {
+        this.itemShortName = itemShortName;
+    }
 
     public Double getDefaultPrice() {
         return defaultPrice;
