@@ -156,28 +156,32 @@ public class ItemManageImpl implements ItemManage {
 //    }
 
     @Override
-    public String updateItemInfo(ItemInfo itemInfo) {
-        itemInfo.setId(390);//----sql中查询的字段，不可为空，否则不能进行更新
-        itemInfo.setAbcClass("B");
+    public String updateItemInfo(String  param) {
+        ItemInfo itemInfo = new ItemInfo();
+        ItemInfo4Json itemInfo4Json = JacksonHelper.fromJSON(param,ItemInfo4Json.class);
+        itemInfo.setAbcClass("A");
         itemInfo.setBatch("abcd");
-        itemInfo.setCompanyId(112);
+        //itemInfo.setCompanyId(112);//不需要设置公司，会自动把当前登录人的CompanyId传过去
         itemInfo.setDefaultPrice(10.0);
-        itemInfo.setFloorLimit(10);
-        itemInfo.setItemBarCode("123123123");
-        itemInfo.setItemClass("A");
-        itemInfo.setItemCode("IM25185338");
-        itemInfo.setItemName("打印机001");
+        itemInfo.setItemShortName(itemInfo4Json.getShortName());
+        itemInfo.setItemBarCode(RandomNo.createNo3Size());
+        itemInfo.setItemClass(itemInfo4Json.getItemClass());
+        //itemInfo.setItemCode("IM10000021");//自动生成
+        itemInfo.setItemName(itemInfo4Json.getItemName());
         itemInfo.setItemTypeCode("IT1120145777");
-        itemInfo.setMemo("测试003");
+        itemInfo.setMemo(itemInfo4Json.getMemo());
         itemInfo.setSupplierCode("string");
         itemInfo.setUnitCode("string");
-        itemInfo.setUpperLimit(50);
+        itemInfo.setItemType(itemInfo4Json.getItemType());
+        itemInfo.setDiscription(itemInfo4Json.getDiscription());
+        itemInfo.setMainType(itemInfo.getMainType());
+        itemInfo.setBrand(itemInfo4Json.getBrand());
+        itemInfo.setUnit(itemInfo4Json.getUnit());
         itemInfo.setWeight("100");
+        itemInfo.setChuanyunid(itemInfo4Json.getChuanyunid());
         String token = RestFul.accToken();
-        String param = JSONObject.toJSONString(itemInfo);
-        System.out.println(param + "--" + token);
-        String message = RestFul.RestFulPostToekn("http://127.0.0.1:8000/wms/item/infos/update", param, token);
-        System.out.println(message);
+        String item = JSONObject.toJSONString(itemInfo);
+        String message = RestFul.RestFulPostToekn(Constant.URL_POST_ITEMINFO_UPDATEBYCY, item, token);
         return message;
     }
 

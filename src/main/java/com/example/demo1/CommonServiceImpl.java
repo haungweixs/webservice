@@ -85,6 +85,8 @@ public class CommonServiceImpl implements CommonService {
             } else if (schemaCode.equals("D001062CPTB") && methodName.equals("addItemInfo")) {
                 System.out.println("添加商品");
                 json = itemManage.addItemInfo(param);
+            } else if(schemaCode.equals("D001062CPTB") && methodName.equals("updateItemInfo")){
+                json = itemManage.updateItemInfo(param);
             } else if (schemaCode.equals("Unit") && methodName.equals("master")) {
                 System.out.println("添加单位");
                 json = unitService.UnitSave(param);

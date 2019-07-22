@@ -31,8 +31,14 @@ public class Constant {
     public static final String URL_POST_BRAND_INSERT="http://47.98.150.253:8000/wms/brands/insert";
 
     //通过产品氚云id获取产品
-    public static final String URL_GET_ITEMINFOBYCYID_SELECT="http://127.0.0.1:8000/wms/item/infos/detailByC";
+    public static final String URL_GET_ITEMINFOBYCYID_SELECT="http://47.98.150.253:8000/wms/item/infos/detailByC";
 
     //通过itemCode获取库存数量
-    public static final String URL_GET_INVENTORY_SELECT="http://127.0.0.1:8000/wms/inventorys/itemCode";
+    public static final String URL_GET_INVENTORY_SELECT="http://47.98.150.253:8000/wms/inventorys/itemCode";
+
+    //新增商品信息
+    public static final String URL_POST_ITEMINFO_UPDATE="http://47.98.150.253:8000/wms/item/infos/update";
+
+    //根据氚云id更新产品信息
+    public static final String URL_POST_ITEMINFO_UPDATEBYCY = "http://127.0.0.1:8000/wms/item/infos/updateByChuanyunid";
 }

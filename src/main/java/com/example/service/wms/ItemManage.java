@@ -45,10 +45,10 @@ public interface ItemManage {
     /**
      *
      * 更新ItemInfo
-     * @param itemInfo
+     * @param param
      * @return
      */
-    String updateItemInfo(ItemInfo itemInfo);
+    String updateItemInfo(String  param);
 
     //itemType管理==================================================================================================
 
