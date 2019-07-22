@@ -8,6 +8,7 @@ import com.example.entity.basic.*;
 import com.example.entity.chuanyun.ChuanyunBillmaster;
 import com.example.service.impl.ChuanYunServiceImpl;
 import com.example.service.wms.ItemManage;
+import com.example.util.RandomNo;
 import com.example.util.RestFul;
 
 public class ItemManageImpl implements ItemManage {
@@ -128,7 +129,7 @@ public class ItemManageImpl implements ItemManage {
         //itemInfo.setCompanyId(112);//不需要设置公司，会自动把当前登录人的CompanyId传过去
         itemInfo.setDefaultPrice(10.0);
         itemInfo.setItemShortName(itemInfo4Json.getShortName());
-        itemInfo.setItemBarCode("123123123");
+        itemInfo.setItemBarCode(RandomNo.createNo3Size());
         itemInfo.setItemClass(itemInfo4Json.getItemClass());
         //itemInfo.setItemCode("IM10000021");//自动生成
         itemInfo.setItemName(itemInfo4Json.getItemName());

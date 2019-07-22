@@ -16,6 +16,17 @@ public  class RandomNo {
         return  No;
     }
 
+    public static String  createNo3Size(){
+        SimpleDateFormat simpleDateFormat;
+        simpleDateFormat = new SimpleDateFormat("yyMMddHH");
+        Date date =new Date();
+        String str=simpleDateFormat.format(date);
+        Random random=new Random();
+        int rannum=(int) (random.nextDouble()*(999-100+1))+100;//获取5位随机数
+        String  No =str +"-"+  rannum;
+        return  No;
+    }
+
     public static String  createTimeString(){
         SimpleDateFormat simpleDateFormat;
         simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
