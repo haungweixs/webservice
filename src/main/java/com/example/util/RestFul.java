@@ -57,7 +57,7 @@ public class RestFul {
     public   static   String  RestFulGet(String targetURl,String input)
     {
         try {
-            URL restServiceURL = new URL(targetURl);
+            URL restServiceURL = new URL(targetURl+input);
             HttpURLConnection httpConnection = (HttpURLConnection) restServiceURL.openConnection();
             httpConnection.setRequestMethod("GET");
             httpConnection.setRequestProperty("Accept", "application/json");
@@ -71,12 +71,11 @@ public class RestFul {
                     (httpConnection.getInputStream())));
 
             String output;
-            System.out.println("Output from Server:  \n");
             String  json="";
             while ((output = responseBuffer.readLine()) != null) {
-                System.out.println(output);
                 json+=output;
             }
+            System.out.println("服务器输出的json："+json);
             httpConnection.disconnect();
             return json;
         } catch (Exception e) {

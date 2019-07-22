@@ -30,4 +30,9 @@ public class Constant {
     //新增品牌
     public static final String URL_POST_BRAND_INSERT="http://47.98.150.253:8000/wms/brands/insert";
 
+    //通过产品氚云id获取产品
+    public static final String URL_GET_ITEMINFOBYCYID_SELECT="http://127.0.0.1:8000/wms/item/infos/detailByC";
+
+    //通过itemCode获取库存数量
+    public static final String URL_GET_INVENTORY_SELECT="http://127.0.0.1:8000/wms/inventorys/itemCode";
 }
