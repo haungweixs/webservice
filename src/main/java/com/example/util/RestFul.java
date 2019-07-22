@@ -171,4 +171,9 @@ public class RestFul {
             return  "false";
         }
     }
+
+    public static void main(String[] args) {
+       String token= accToken();
+        System.out.println(token);
+    }
 }

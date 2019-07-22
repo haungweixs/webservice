@@ -1,7 +1,5 @@
 package com.example.entity.chuanyun;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
-import sun.plugin2.main.client.PrintBandDescriptor;
 
 /**
  * Created by LiWeijie
