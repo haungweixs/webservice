@@ -157,6 +157,7 @@ public class ItemManageImpl implements ItemManage {
 
     @Override
     public String updateItemInfo(String  param) {
+        System.out.println("通过氚云更新产品信息");
         ItemInfo itemInfo = new ItemInfo();
         ItemInfo4Json itemInfo4Json = JacksonHelper.fromJSON(param,ItemInfo4Json.class);
         itemInfo.setAbcClass("A");
