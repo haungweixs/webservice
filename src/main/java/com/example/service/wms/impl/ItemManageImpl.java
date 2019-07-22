@@ -163,7 +163,7 @@ public class ItemManageImpl implements ItemManage {
         itemInfo.setDefaultPrice(10.0);
         itemInfo.setFloorLimit(10);
         itemInfo.setItemBarCode("123123123");
-        itemInfo.setItemClass("有打");
+        itemInfo.setItemClass("A");
         itemInfo.setItemCode("IM25185338");
         itemInfo.setItemName("打印机001");
         itemInfo.setItemTypeCode("IT1120145777");
