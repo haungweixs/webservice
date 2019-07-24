@@ -28,6 +28,15 @@ public class ChuanyunBillmaster {
     private  String  cyWareCode;
 
     private  String  cyItemmaster;
+    private String oldOrNew;
+
+    public String getOldOrNew() {
+        return oldOrNew;
+    }
+
+    public void setOldOrNew(String oldOrNew) {
+        this.oldOrNew = oldOrNew;
+    }
 
     public String getCyWareCode() {
         return cyWareCode;

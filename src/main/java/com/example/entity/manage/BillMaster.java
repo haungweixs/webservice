@@ -9,6 +9,16 @@ public class BillMaster {
      * 编码
      */
 
+    private Integer newOrOld;
+
+    public Integer getNewOrOld() {
+        return newOrOld;
+    }
+
+    public void setNewOrOld(Integer newOrOld) {
+        this.newOrOld = newOrOld;
+    }
+
     private String billNo;
 
     private Integer  status;

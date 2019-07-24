@@ -56,6 +56,9 @@ public class WmsServiceimp implements WmsService {
             i++;
         }
         BillMaster dxs=new BillMaster();
+        if(jxiDhl.getOldOrNew()=="新设备"){
+            dxs.setNewOrOld(1);
+        }
         dxs.setStatus(jxiDhl.getStatus());
         dxs.setBillNo(BillNo);
         dxs.setType(1);
@@ -84,6 +87,7 @@ public class WmsServiceimp implements WmsService {
     public String intsercome(String param) throws ParseException {
         ChuanyunBillmaster jxiDhl=JacksonHelper.fromJSON(param,ChuanyunBillmaster.class);
         int  number=(int)((Math.random()*9+1)*10000);    //生成5位随机数字
+        String oldOrNew = jxiDhl.getOldOrNew();
         System.out.println(jxiDhl.getAddtime());
         String  d=jxiDhl.getAddtime();
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
