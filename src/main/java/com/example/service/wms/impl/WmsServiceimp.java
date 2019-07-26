@@ -11,7 +11,6 @@ import com.example.entity.manage.Billsdd;
 import com.example.service.wms.WmsService;
 import com.example.util.RestFul;
 import org.springframework.stereotype.Service;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,6 +26,7 @@ public class WmsServiceimp implements WmsService {
         ChuanyunBillmaster jxiDhl=JacksonHelper.fromJSON(param,ChuanyunBillmaster.class);
         int  number=(int)((Math.random()*9+1)*10000);    //生成5位随机数字s
         System.out.println(jxiDhl.getAddtime());
+        System.out.println(jxiDhl.getOldOrNew());
         String  d=jxiDhl.getAddtime();
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHH");
@@ -56,9 +56,12 @@ public class WmsServiceimp implements WmsService {
             i++;
         }
         BillMaster dxs=new BillMaster();
-        if(jxiDhl.getOldOrNew()=="新设备"){
+        if(jxiDhl.getOldOrNew().equals("新设备")){
             dxs.setNewOrOld(1);
+        }else{
+            dxs.setNewOrOld(0);
         }
+        dxs.setChaunyunid(jxiDhl.getChaunyunid());
         dxs.setStatus(jxiDhl.getStatus());
         dxs.setBillNo(BillNo);
         dxs.setType(1);
@@ -72,6 +75,7 @@ public class WmsServiceimp implements WmsService {
         dxs.setCyenterid(jxiDhl.getCyenterid());
         dxs.setMemo(jxiDhl.getRemark());
         dxs.setContractNo(jxiDhl.getContractNo());
+        System.out.println(dxs.getNewOrOld());
         String json1= JSONObject.toJSONString(dxs);
         Billsdd sdbn=new Billsdd();
         sdbn.setBillDetails(sdni);
@@ -143,6 +147,15 @@ public class WmsServiceimp implements WmsService {
     }
 
     public static void main(String[] args) {
-        System.out.println(RestFul.accToken());
+//        String param = "{\"contractNo\":\"RK20190724003\",\"cyItemmaster\":\"\",\"cyWareCode\":\"089a89ca-aae8-4602-b52c-be4e0f4f331d\",\"remark\":\"测试旧设备\",\"cyenterid\":\"812110bc-62c7-4ffc-b0e8-f328448ddb73\",\"userid\":\"70641d44-c0e6-4971-ad73-00265a9df310\",\"addtime\":\"2019-07-24 14:16:19\",\"oldOrNew\":\"新设备\",\"status\":\"0\",\"billdetai\":[{\"cyItemCode\":\"76bab1c7-ecdc-4438-a072-262f638127be\",\"enterid\":\"12fce2c5-20af-411d-bce1-a20ae3959b6d\",\"quantity\":\"2\",\"batch\":\"2019-7-24\"}]}\n";
+//        WmsService wmsService = new WmsServiceimp();
+//        try{
+//            wmsService.insertWms(param);
+//
+//        }catch (Exception e){
+//
+//        }
+
+
     }
 }

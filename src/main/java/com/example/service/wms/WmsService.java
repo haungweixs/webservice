@@ -10,6 +10,7 @@ import java.text.ParseException;
  */
 
 public interface WmsService {
+
     //新增billMaster以及billDetail列表  入库单据
     public  String  insertWms(String  param) throws ParseException;
 

@@ -79,6 +79,7 @@ public class CommonServiceImpl implements CommonService {
                 String token = auditService.accessToken();
                 json = auditService.createAudit(token, jxiDhl);
             } else if (schemaCode.equals("sf3g327087wkcxxo45d9zqu77") && methodName.equals("library")) {
+
                 json = wmsService.insertWms(param);
             } else if (schemaCode.equals("D001062chuku") && methodName.equals("master")) {
                 json = wmsService.intsercome(param);

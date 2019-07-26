@@ -130,7 +130,13 @@ public class ItemManageImpl implements ItemManage {
         itemInfo.setDefaultPrice(10.0);
         itemInfo.setItemShortName(itemInfo4Json.getShortName());
         itemInfo.setItemBarCode(RandomNo.createNo3Size());
-        itemInfo.setItemClass(itemInfo4Json.getItemClass());
+        String itemClass = itemInfo4Json.getItemClass();
+        if(itemClass !="" && itemClass != null){
+            itemInfo.setItemClass(itemInfo4Json.getItemClass());
+        }else{
+            itemInfo.setItemClass("无默认配置");
+        }
+
         //itemInfo.setItemCode("IM10000021");//自动生成
         itemInfo.setItemName(itemInfo4Json.getItemName());
         itemInfo.setItemTypeCode("IT1120145777");
