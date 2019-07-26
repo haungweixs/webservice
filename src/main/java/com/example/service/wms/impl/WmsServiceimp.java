@@ -56,7 +56,7 @@ public class WmsServiceimp implements WmsService {
             i++;
         }
         BillMaster dxs=new BillMaster();
-        if(jxiDhl.getOldOrNew().equals("新设备")){
+        if(jxiDhl.getOldOrNew().equals("旧设备")){
             dxs.setNewOrOld(1);
         }else{
             dxs.setNewOrOld(0);
