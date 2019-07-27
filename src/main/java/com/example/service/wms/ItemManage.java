@@ -65,7 +65,7 @@ public interface ItemManage {
      * @param itemType
      * @return
      */
-    String addItemType(ItemType itemType);
+   // String addItemType(ItemType itemType);
 
     /**
      * 跟新物料信息
@@ -87,6 +87,15 @@ public interface ItemManage {
      * @return
      */
     String addItemType(String param);
+
+    /***
+     * 更新商品二级分类
+     * @return
+     */
+    String updateItemType(String param);
+
+
+
 
     /**
      * 添加品牌

@@ -97,6 +97,9 @@ public class CommonServiceImpl implements CommonService {
             } else if (schemaCode.equals("D001062class") && methodName.equals("addItemType")) {
                 System.out.println("添加商品二级分类");
                 json = itemManage.addItemType(param);
+            }else if(schemaCode.equals("D001062class") && methodName.equals("updateItemType")){
+                System.out.println("更新商品二级分类");
+                json = itemManage.updateItemType(param);
             }else if (schemaCode.equals("D000030SCMWareHouse")&&methodName.equals("wareif")){
                      json=wareInfoServer.saveWareInfo(param);
             }else if(schemaCode.equals("igsscmdh48fs3tl5xqrxx4tw0")&&methodName.equals("item")){

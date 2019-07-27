@@ -52,20 +52,19 @@ public class ItemManageImpl implements ItemManage {
      * @param itemType
      * @return
      */
-    @Override
-    public String addItemType(ItemType itemType) {
-        //itemType.setCompanyId(112); //不需要设置公司，会自动把当前登录人的CompanyId传过去
-        //itemType.setItemTypeCode("IT123456789");//自动生成
-        itemType.setItemTypeName("外星人1");
-        itemType.setItemTypeState(0);
-        itemType.setMemo("2019.04.16更新");
-        String token = RestFul.accToken();
-        String param = JSONObject.toJSONString(itemType);
-        System.out.println(param);
-        String message = RestFul.RestFulPostToekn(Constant.URL_POST_ITEMTYPE_INSERT, param, token);
-        System.out.println(message);
-        return message;
-    }
+//    @Override
+//    public String addItemType(ItemType itemType) {
+//        ItemType4Json itemType4Json =
+//        itemType.setItemTypeName("外星人1");
+//        itemType.setItemTypeState(0);
+//        itemType.setMemo("2019.04.16更新");
+//        String token = RestFul.accToken();
+//        String param = JSONObject.toJSONString(itemType);
+//        System.out.println(param);
+//        String message = RestFul.RestFulPostToekn(Constant.URL_POST_ITEMTYPE_INSERT, param, token);
+//        System.out.println(message);
+//        return message;
+//    }
 
     @Override
     public String updateItemType(ItemType itemType) {
@@ -104,6 +103,31 @@ public class ItemManageImpl implements ItemManage {
     public String addItemType(String param) {
         ItemType itemType = new ItemType();
         ItemType4Json itemType4Json = JacksonHelper.fromJSON(param,ItemType4Json.class);
+        itemType.setMemo(itemType4Json.getMemo());
+        itemType.setItemTypeId(0);
+        if(itemType4Json.getState().equals("生效")){
+            itemType.setItemTypeState(1);
+        }else if(itemType4Json.getState().equals("失效")){
+            itemType.setItemTypeState(0);
+        }else if(itemType4Json.getState()==null){
+            itemType.setItemTypeState(1);
+        }
+        itemType.setChuanyunid(itemType4Json.getChuanyunid());
+        itemType.setMainType(itemType4Json.getMainType());
+        String json = JSONObject.toJSONString(itemType);
+        String result = RestFul.RestFulPostToekn(Constant.URL_POST_ITEMTYPE_INSERT,json,RestFul.accToken());
+        return result;
+    }
+
+    /**
+     * 根据氚云id更新产品信息
+     * @return
+     */
+    @Override
+    public String updateItemType(String param) {
+        ItemType itemType = new ItemType();
+        ItemType4Json itemType4Json = JacksonHelper.fromJSON(param,ItemType4Json.class);
+        itemType.setItemTypeName(itemType4Json.getTypeName());
         itemType.setMemo(itemType4Json.getMemo());
         itemType.setItemTypeId(0);
         if(itemType4Json.getState().equals("生效")){
