@@ -140,9 +140,10 @@ public class ItemManageImpl implements ItemManage {
         itemType.setChuanyunid(itemType4Json.getChuanyunid());
         itemType.setMainType(itemType4Json.getMainType());
         String json = JSONObject.toJSONString(itemType);
-        String result = RestFul.RestFulPostToekn(Constant.URL_POST_ITEMTYPE_INSERT,json,RestFul.accToken());
+        String result = RestFul.RestFulPostToekn(Constant.URL_POST_ITEMTYPE_UPDATEBYCY,json,RestFul.accToken());
         return result;
     }
+
 
     @Override
     public String addItemInfo(String param) {
@@ -255,13 +256,8 @@ public class ItemManageImpl implements ItemManage {
 
     public static void main(String[] args) {
         ItemManageImpl itemManage = new ItemManageImpl();
-        //int count = itemManage.queryItemCount("{\"itemObjectid\":\"975c6854-2b79-4573-bfda-5df063a1b9c3\"}");
+        String param ="{\"chuanyunid\":\"ecbdacf6-6e9e-41e1-bf8f-dc4d4e742f6c\",\"typeName\":\"测试二级分类\",\"state\":\"生效\",\"mainTypeId\":\"e81b604c-75f0-4d51-a627-b13b1dea3077\",\"memo\":\"测试数据\"}\n";
+        itemManage.addItemType(param);
 
-        //itemManage.deleteItemInfo("IM22150834");
-
-        // itemManage.addItemInfo(new ItemInfo());
-        //itemManage.updateItemInfo(new ItemInfo());
-        //itemManage.updateItemType(new ItemType());
-        //itemManage.deleteItemType("IT123456789");
     }
 }

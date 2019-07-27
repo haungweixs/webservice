@@ -52,6 +52,8 @@ public class Constant {
     //删除单条产品分类信息
     public static final String URL_GET_ITEMTYPE_DELETE="http://47.98.150.253:8000/wms/item/types/delete";
 
+    //更新产品二级分类
+    public static final String URL_POST_ITEMTYPE_UPDATEBYCY = "http://47.98.150.253:8000/wms/item/types/updateByCy";
 
 
 }
