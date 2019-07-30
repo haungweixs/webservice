@@ -3,7 +3,7 @@ package com.example.entity.basic;
 public class ItemType4Json {
     private String chuanyunid;
     private String typeName;
-    private String mainType;
+    private String mainTypeId;
     private String state;
     private String memo;
 
@@ -31,12 +31,12 @@ public class ItemType4Json {
         this.typeName = typeName;
     }
 
-    public String getMainType() {
-        return mainType;
+    public String getMainTypeId() {
+        return mainTypeId;
     }
 
-    public void setMainType(String mainType) {
-        this.mainType = mainType;
+    public void setMainTypeId(String mainType) {
+        this.mainTypeId = mainType;
     }
 
     public String getState() {

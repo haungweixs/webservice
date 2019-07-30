@@ -9,14 +9,14 @@ public class BillMaster {
      * 编码
      */
 
-    private Integer newOrOld;
+    private Integer neworold;
 
-    public Integer getNewOrOld() {
-        return newOrOld;
+    public Integer getNeworold() {
+        return neworold;
     }
 
-    public void setNewOrOld(Integer newOrOld) {
-        this.newOrOld = newOrOld;
+    public void setNeworold(Integer neworold) {
+        this.neworold = neworold;
     }
 
     private String billNo;

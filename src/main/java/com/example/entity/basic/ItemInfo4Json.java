@@ -9,7 +9,7 @@ public class ItemInfo4Json {
     private String itemName;
     private String discription;
     private String memo;
-    private String mainType;
+    private String itemMainType;
     private String itemType;
     private String unit;
     private String brand;
@@ -32,12 +32,12 @@ public class ItemInfo4Json {
         this.itemClass = itemClass;
     }
 
-    public String getMainType() {
-        return mainType;
+    public String getItemMainType() {
+        return itemMainType;
     }
 
-    public void setMainType(String mainType) {
-        this.mainType = mainType;
+    public void setItemMainType(String itemMainType) {
+        this.itemMainType = itemMainType;
     }
 
     public String getItemType() {

@@ -9,7 +9,7 @@ public class Brand {
     private Integer id;
 
 
-    private String chuanyunid;
+    private String chuanyunId;
 
     private String brandName;
 
@@ -41,12 +41,12 @@ public class Brand {
         this.id = id;
     }
 
-    public String getChuanyunid() {
-        return chuanyunid;
+    public String getChuanyunId() {
+        return chuanyunId;
     }
 
-    public void setChuanyunid(String chuanyunid) {
-        this.chuanyunid = chuanyunid;
+    public void setChuanyunId(String chuanyunid) {
+        this.chuanyunId = chuanyunid;
     }
 
     public String getBrandName() {

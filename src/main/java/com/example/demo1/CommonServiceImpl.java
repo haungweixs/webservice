@@ -97,6 +97,12 @@ public class CommonServiceImpl implements CommonService {
             } else if (schemaCode.equals("D001062class") && methodName.equals("addItemType")) {
                 System.out.println("添加商品二级分类");
                 json = itemManage.addItemType(param);
+            }else if(schemaCode.equals("brand") && methodName.equals("addBrand")){
+                System.out.println("添加品牌");
+                json = itemManage.addBrand(param);
+            }else if(schemaCode.equals("brand") && methodName.equals("updateBrand")){
+                System.out.println("更新品牌");
+                json = itemManage.updateBrand(param);
             }else if(schemaCode.equals("D001062class") && methodName.equals("updateItemType")){
                 System.out.println("更新商品二级分类");
                 json = itemManage.updateItemType(param);
@@ -105,6 +111,7 @@ public class CommonServiceImpl implements CommonService {
             }else if(schemaCode.equals("igsscmdh48fs3tl5xqrxx4tw0")&&methodName.equals("item")){
                      json=itemeasServer.ItemasSave(param);
             } else if (schemaCode.equals("D001062inventory")&&methodName.equals("getItemCount")){
+                     System.out.println("查询库存");
                     Integer temp = itemManage.queryItemCount(param);
                     json = temp.toString();
             }

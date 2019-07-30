@@ -2,15 +2,15 @@ package com.example.entity.basic;
 
 public class Brand4Json {
 
-    private String chuanyunid;
+    private String chuanyunId;
     private String brandName;
 
-    public String getChuanyunid() {
-        return chuanyunid;
+    public String getChuanyunId() {
+        return chuanyunId;
     }
 
-    public void setChuanyunid(String chuanyunid) {
-        this.chuanyunid = chuanyunid;
+    public void setChuanyunId(String chuanyunId) {
+        this.chuanyunId = chuanyunId;
     }
 
     public String getBrandName() {

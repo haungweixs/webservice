@@ -104,6 +104,14 @@ public interface ItemManage {
      */
     String addBrand(String param);
 
+
+    /**
+     * 更新品牌信息
+     * @param param
+     * @return
+     */
+    String updateBrand(String param);
+
     /**
      * 查询库存
      * @param param

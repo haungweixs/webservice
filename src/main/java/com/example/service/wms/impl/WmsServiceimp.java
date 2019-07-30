@@ -57,9 +57,9 @@ public class WmsServiceimp implements WmsService {
         }
         BillMaster dxs=new BillMaster();
         if(jxiDhl.getOldOrNew().equals("旧设备")){
-            dxs.setNewOrOld(1);
+            dxs.setNeworold(1);
         }else{
-            dxs.setNewOrOld(0);
+            dxs.setNeworold(0);
         }
         dxs.setChaunyunid(jxiDhl.getChaunyunid());
         dxs.setStatus(jxiDhl.getStatus());
@@ -75,7 +75,6 @@ public class WmsServiceimp implements WmsService {
         dxs.setCyenterid(jxiDhl.getCyenterid());
         dxs.setMemo(jxiDhl.getRemark());
         dxs.setContractNo(jxiDhl.getContractNo());
-        System.out.println(dxs.getNewOrOld());
         String json1= JSONObject.toJSONString(dxs);
         Billsdd sdbn=new Billsdd();
         sdbn.setBillDetails(sdni);
@@ -99,6 +98,7 @@ public class WmsServiceimp implements WmsService {
         Date dbnud=sdf1.parse(d);
         System.out.println();
         String  time1=sdf.format(dbnud);
+
         String  BillNo="CK-"+2+"-"+sdf.format(dbnud)+"-"+number;
         System.out.println(BillNo);
         int  i=0;

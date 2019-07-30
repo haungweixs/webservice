@@ -84,13 +84,22 @@ public class ItemManageImpl implements ItemManage {
     public String addBrand(String param) {
         Brand brand = new Brand();
         Brand4Json brand4Json = JacksonHelper.fromJSON(param,Brand4Json.class);
-        brand.setBrandCode("1");
         brand.setBrandName(brand4Json.getBrandName());
-        brand.setChuanyunid(brand4Json.getChuanyunid());
-        brand.setCompanyId(0);
-        brand.setId(0);
+        brand.setChuanyunId(brand4Json.getChuanyunId());
         String json = JSONObject.toJSONString(brand);
-        String message = RestFul.RestFulPostToekn(json,Constant.URL_POST_BRAND_INSERT,RestFul.accToken());
+        System.out.println(json);
+        String message = RestFul.RestFulPostToekn(Constant.URL_POST_BRAND_INSERT,json,RestFul.accToken());
+        return message;
+    }
+
+    @Override
+    public String updateBrand(String param) {
+        Brand brand = new Brand();
+        Brand4Json brand4Json = JacksonHelper.fromJSON(param,Brand4Json.class);
+        brand.setBrandName(brand4Json.getBrandName());
+        brand.setChuanyunId(brand4Json.getChuanyunId());
+        String json = JSONObject.toJSONString(brand);
+        String message = RestFul.RestFulPostToekn(Constant.URL_POST_BRAND_UPDATEBYCY,json,RestFul.accToken());
         return message;
     }
 
@@ -103,6 +112,7 @@ public class ItemManageImpl implements ItemManage {
     public String addItemType(String param) {
         ItemType itemType = new ItemType();
         ItemType4Json itemType4Json = JacksonHelper.fromJSON(param,ItemType4Json.class);
+
         itemType.setMemo(itemType4Json.getMemo());
         itemType.setItemTypeId(0);
         if(itemType4Json.getState().equals("生效")){
@@ -113,7 +123,8 @@ public class ItemManageImpl implements ItemManage {
             itemType.setItemTypeState(1);
         }
         itemType.setChuanyunid(itemType4Json.getChuanyunid());
-        itemType.setMainType(itemType4Json.getMainType());
+        itemType.setMainType(itemType4Json.getMainTypeId());
+        itemType.setItemTypeName(itemType4Json.getTypeName());
         String json = JSONObject.toJSONString(itemType);
         String result = RestFul.RestFulPostToekn(Constant.URL_POST_ITEMTYPE_INSERT,json,RestFul.accToken());
         return result;
@@ -138,7 +149,7 @@ public class ItemManageImpl implements ItemManage {
             itemType.setItemTypeState(1);
         }
         itemType.setChuanyunid(itemType4Json.getChuanyunid());
-        itemType.setMainType(itemType4Json.getMainType());
+        itemType.setMainType(itemType4Json.getMainTypeId());
         String json = JSONObject.toJSONString(itemType);
         String result = RestFul.RestFulPostToekn(Constant.URL_POST_ITEMTYPE_UPDATEBYCY,json,RestFul.accToken());
         return result;
@@ -170,7 +181,7 @@ public class ItemManageImpl implements ItemManage {
         itemInfo.setUnitCode("string");
        itemInfo.setItemType(itemInfo4Json.getItemType());
        itemInfo.setDiscription(itemInfo4Json.getDiscription());
-       itemInfo.setMainType(itemInfo.getMainType());
+       itemInfo.setMainType(itemInfo4Json.getItemMainType());
        itemInfo.setBrand(itemInfo4Json.getBrand());
        itemInfo.setUnit(itemInfo4Json.getUnit());
         itemInfo.setWeight("100");
@@ -199,6 +210,7 @@ public class ItemManageImpl implements ItemManage {
         itemInfo.setItemBarCode(RandomNo.createNo3Size());
         itemInfo.setItemClass(itemInfo4Json.getItemClass());
         //itemInfo.setItemCode("IM10000021");//自动生成
+        itemInfo.setMainType(itemInfo4Json.getItemMainType());
         itemInfo.setItemName(itemInfo4Json.getItemName());
         itemInfo.setItemTypeCode("IT1120145777");
         itemInfo.setMemo(itemInfo4Json.getMemo());
@@ -206,7 +218,6 @@ public class ItemManageImpl implements ItemManage {
         itemInfo.setUnitCode("string");
         itemInfo.setItemType(itemInfo4Json.getItemType());
         itemInfo.setDiscription(itemInfo4Json.getDiscription());
-        itemInfo.setMainType(itemInfo.getMainType());
         itemInfo.setBrand(itemInfo4Json.getBrand());
         itemInfo.setUnit(itemInfo4Json.getUnit());
         itemInfo.setWeight("100");
@@ -234,30 +245,23 @@ public class ItemManageImpl implements ItemManage {
          ItemInventory itemInventory  = JacksonHelper.fromJSON(param,ItemInventory.class);
          String itemObjectid = itemInventory.getItemObjectid();
          String objectid = itemInventory.getObjectid();
-        //通过氚云产品objectid获取产品的code
-         String input = "?chuanyunid="+itemObjectid;
-         String message = RestFul.RestFulGet(Constant.URL_GET_ITEMINFOBYCYID_SELECT,input);
-
-         Result result = JacksonHelper.fromJSON(message,Result.class);
-
-        ItemInfo itemInfo = result.getData();
-
-         //通过itemCode获取到产品的库存数量
-        String itemCode = itemInfo.getItemCode();
-        System.out.println(itemCode);
-         String input1 = "?itemCode="+itemCode;
+         String input1 = "?itemCode="+itemObjectid;
          String message1 = RestFul.RestFulGet(Constant.URL_GET_INVENTORY_SELECT,input1);
          Result1 result1 = JacksonHelper.fromJSON(message1,Result1.class);
-         Integer count = result1.getData().getQuantity();
-         String temp = count.toString();
-        ItemCountQueryBackToCy.backToCy(temp,objectid);
+         Integer count = result1.getData().getQuantity();//库内数量
+         Integer outCount = result1.getData().getActualquantity();//已出数量
+         Integer allCount = result1.getData().getToalquantity();//总数量
+         Inventory inventory = new Inventory();
+         inventory.setQuantity(count);
+         inventory.setActualquantity(outCount);
+         inventory.setToalquantity(allCount);
+        ItemCountQueryBackToCy.backToCy(inventory,objectid);
         return count;
     }
 
     public static void main(String[] args) {
         ItemManageImpl itemManage = new ItemManageImpl();
-        String param ="{\"chuanyunid\":\"ecbdacf6-6e9e-41e1-bf8f-dc4d4e742f6c\",\"typeName\":\"测试二级分类\",\"state\":\"生效\",\"mainTypeId\":\"e81b604c-75f0-4d51-a627-b13b1dea3077\",\"memo\":\"测试数据\"}\n";
-        itemManage.addItemType(param);
-
+        String param = "{\"itemObjectid\":\"b5a97853-2513-43b9-8927-8e18f5c327e7\",\"objectid\":\"f1b7a281-3d62-4503-a3c0-af3dd258e00e\"}\n";
+        itemManage.queryItemCount(param);
     }
 }
