@@ -74,6 +74,7 @@ public class WmsServiceimp implements WmsService {
         dxs.setCompanyId(2);
         dxs.setCyenterid(jxiDhl.getCyenterid());
         dxs.setMemo(jxiDhl.getRemark());
+        dxs.setCycomeid(jxiDhl.getCycomeid());
         dxs.setContractNo(jxiDhl.getContractNo());
         String json1= JSONObject.toJSONString(dxs);
         Billsdd sdbn=new Billsdd();

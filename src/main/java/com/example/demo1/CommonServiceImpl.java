@@ -109,6 +109,7 @@ public class CommonServiceImpl implements CommonService {
             }else if (schemaCode.equals("D000030SCMWareHouse")&&methodName.equals("wareif")){
                      json=wareInfoServer.saveWareInfo(param);
             }else if(schemaCode.equals("igsscmdh48fs3tl5xqrxx4tw0")&&methodName.equals("item")){
+                System.out.println("添加货主");
                      json=itemeasServer.ItemasSave(param);
             } else if (schemaCode.equals("D001062inventory")&&methodName.equals("getItemCount")){
                      System.out.println("查询库存");
