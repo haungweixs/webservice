@@ -8,6 +8,7 @@ import com.example.entity.chuanyun.ChuanyunBilldetail;
 import com.example.entity.manage.BillDetail;
 import com.example.entity.manage.BillMaster;
 import com.example.entity.manage.Billsdd;
+import com.example.service.wms.SupplierManageService;
 import com.example.service.wms.WmsService;
 import com.example.util.RestFul;
 import org.springframework.stereotype.Service;
@@ -69,13 +70,16 @@ public class WmsServiceimp implements WmsService {
         dxs.setStatus(jxiDhl.getStatus());
         dxs.setAddTime(d);
         dxs.setState(1);
-       dxs.setCyWareCode(jxiDhl.getCyWareCode());
-       dxs.setCyItemmaster(jxiDhl.getCyItemmaster());
+        dxs.setMold(jxiDhl.getMold());
+        dxs.setCyWareCode(jxiDhl.getCyWareCode());
+        dxs.setCyItemmaster(jxiDhl.getCyItemmaster());
         dxs.setCompanyId(2);
         dxs.setCyenterid(jxiDhl.getCyenterid());
         dxs.setMemo(jxiDhl.getRemark());
         dxs.setCycomeid(jxiDhl.getCycomeid());
         dxs.setContractNo(jxiDhl.getContractNo());
+        dxs.setSupplierCode(jxiDhl.getSupplierCode());
+        dxs.setDealTime(jxiDhl.getDealTime());
         String json1= JSONObject.toJSONString(dxs);
         Billsdd sdbn=new Billsdd();
         sdbn.setBillDetails(sdni);
@@ -137,6 +141,7 @@ public class WmsServiceimp implements WmsService {
         dxs.setCompanyId(2);
         dxs.setMemo(jxiDhl.getRemark());
         dxs.setContractNo(jxiDhl.getContractNo());
+        dxs.setSupplierCode(jxiDhl.getSupplierCode());
         String json1= JSONObject.toJSONString(dxs);
         Billsdd sdbn=new Billsdd();
         sdbn.setBillDetails(sdni);
@@ -148,14 +153,16 @@ public class WmsServiceimp implements WmsService {
     }
 
     public static void main(String[] args) {
-//        String param = "{\"contractNo\":\"RK20190724003\",\"cyItemmaster\":\"\",\"cyWareCode\":\"089a89ca-aae8-4602-b52c-be4e0f4f331d\",\"remark\":\"测试旧设备\",\"cyenterid\":\"812110bc-62c7-4ffc-b0e8-f328448ddb73\",\"userid\":\"70641d44-c0e6-4971-ad73-00265a9df310\",\"addtime\":\"2019-07-24 14:16:19\",\"oldOrNew\":\"新设备\",\"status\":\"0\",\"billdetai\":[{\"cyItemCode\":\"76bab1c7-ecdc-4438-a072-262f638127be\",\"enterid\":\"12fce2c5-20af-411d-bce1-a20ae3959b6d\",\"quantity\":\"2\",\"batch\":\"2019-7-24\"}]}\n";
-//        WmsService wmsService = new WmsServiceimp();
-//        try{
-//            wmsService.insertWms(param);
-//
-//        }catch (Exception e){
-//
-//        }
+       String param = "{\"contractNo\":\"RK20190903007\",\"cyItemmaster\":\"e9444c28-a713-42d6-998a-0f7ab5014c81\",\"cyWareCode\":\"089a89ca-aae8-4602-b52c-be4e0f4f331d\",\"remark\":\"测试\",\"cyenterid\":\"7160280a-12c9-4864-92d4-dc94e8d63199\",\"userid\":\"70641d44-c0e6-4971-ad73-00265a9df310\",\"addtime\":\"2019-09-03 11:16:38\",\"oldOrNew\":\"新设备\",\"status\":\"0\",\"supplierCode\":\"4ebc5f43-710f-45b2-af6c-c0797691ea94\",\"billdetai\":[{\"cyItemCode\":\"824423c0-37b6-453f-85cd-fbc587846fd4\",\"enterid\":\"eac619d9-ccd0-4d15-99d4-795284a8b198\",\"quantity\":\"2\",\"batch\":\"2019-9-3\"}]}";
+       WmsService wmsService = new WmsServiceimp();
+
+
+
+       try{
+        wmsService.insertWms(param);//
+        }catch (Exception e){
+
+        }
 
 
     }

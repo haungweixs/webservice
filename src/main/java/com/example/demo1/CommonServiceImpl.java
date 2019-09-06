@@ -4,19 +4,14 @@ import com.alibaba.fastjson.JSON;
 import com.example.demo.JacksonHelper;
 import com.example.demo.Query;
 import com.example.entity.*;
+import com.example.entity.basic.SupplierManage;
 import com.example.pojo.PinYinUtil;
 import com.example.service.AuditService;
 import com.example.service.UnitService;
 import com.example.service.impl.AuditServiceImp;
 import com.example.service.impl.UnitServiceImp;
-import com.example.service.wms.ItemManage;
-import com.example.service.wms.ItemeasServer;
-import com.example.service.wms.WareInfoServer;
-import com.example.service.wms.WmsService;
-import com.example.service.wms.impl.ItemManageImpl;
-import com.example.service.wms.impl.ItemeasServerimpl;
-import com.example.service.wms.impl.WareInfoServerImpl;
-import com.example.service.wms.impl.WmsServiceimp;
+import com.example.service.wms.*;
+import com.example.service.wms.impl.*;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -43,6 +38,8 @@ public class CommonServiceImpl implements CommonService {
     public WareInfoServer wareInfoServer=new WareInfoServerImpl();
 
     public ItemeasServer itemeasServer=new ItemeasServerimpl();
+
+    public SupplierManageService supplierManageService = new SupplierManageServiceImpl();
 
     @Override
     public String GetSchema(String schemaCode) {
@@ -115,6 +112,9 @@ public class CommonServiceImpl implements CommonService {
                      System.out.println("查询库存");
                     Integer temp = itemManage.queryItemCount(param);
                     json = temp.toString();
+            }else if(schemaCode.equals("supplier")&&methodName.equals("addSupplier")){
+                System.out.println("添加供应商");
+                json=supplierManageService.addSupplier(param);
             }
             System.out.println("打印返回结果：" + json);
             return "{\"Code\": \"1\",\"Message\": \"调用测试接口成功\"}";

@@ -11,6 +11,19 @@ public class BillMaster {
 
     private Integer neworold;
 
+    /**
+     * 供应商code
+     */
+    private String supplierCode;
+
+    public String getSupplierCode() {
+        return supplierCode;
+    }
+
+    public void setSupplierCode(String supplierCode) {
+        this.supplierCode = supplierCode;
+    }
+
     public Integer getNeworold() {
         return neworold;
     }
@@ -35,6 +48,26 @@ public class BillMaster {
      * 1-入库 2-出库 3-移库 4-调拨
      */
     private Integer type;
+
+    private String dealTime;
+    private String recycleTime;
+    public String getDealTime() {
+        return dealTime;
+    }
+
+    public void setDealTime(String dealTime) {
+        this.dealTime = dealTime;
+    }
+
+    public String getRecycleTime() {
+        return recycleTime;
+    }
+
+    public void setRecycleTime(String recycleTime) {
+        this.recycleTime = recycleTime;
+    }
+
+
 
 
 

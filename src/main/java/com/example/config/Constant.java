@@ -9,8 +9,8 @@ public class Constant {
     public  static  final String URL_POST_TOKEN="http://47.98.150.253:8000/wms/login";
     //public  static  final String URL_POST_TOKEN="http://127.0.0.1:8000/wms/login";
     //新增billMaster以及billDetail列表    //新增出入库单据
-    public   static  final String  URL_POST_MASTER_INSERT="http://47.98.150.253:8000/wms/bill/masters/insert";
-    //public   static  final String  URL_POST_MASTER_INSERT="http://127.0.0.1:8000/wms/bill/masters/insert";
+   public   static  final String  URL_POST_MASTER_INSERT="http://47.98.150.253:8000/wms/bill/masters/insert";
+   // public   static  final String  URL_POST_MASTER_INSERT="http://127.0.0.1:8000/wms/bill/masters/insert";
 
     public static final String URL_POST_ITEMINFO_INSERT="http://47.98.150.253:8000/wms/item/infos/insert";
 
@@ -58,6 +58,8 @@ public class Constant {
     //更新产品二级分类
     public static final String URL_POST_ITEMTYPE_UPDATEBYCY = "http://47.98.150.253:8000/wms/item/types/updateByCy";
 
+    //添加供应商
+    public static final String URL_POST_SUPPLIER_INSERT="http://47.98.150.253:8000/wms/supplier/manages/insert";
 
 
 }
