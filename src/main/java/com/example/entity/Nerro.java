@@ -8,6 +8,15 @@ public class Nerro {
     private   String  context;
     private  String  time;
     private  String  ftime;
+    private  String state;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public Nerro() {
     }

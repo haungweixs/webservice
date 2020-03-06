@@ -16,6 +16,19 @@ public class BillMaster {
      */
     private String supplierCode;
 
+    /**
+     * 客户code
+     * */
+    private String   clientCode;
+
+    public String getClientCode() {
+        return clientCode;
+    }
+
+    public void setClientCode(String clientCode) {
+        this.clientCode = clientCode;
+    }
+
     public String getSupplierCode() {
         return supplierCode;
     }
@@ -51,6 +64,16 @@ public class BillMaster {
 
     private String dealTime;
     private String recycleTime;
+    private String recycleType;
+
+    public String getRecycleType() {
+        return recycleType;
+    }
+
+    public void setRecycleType(String recycleType) {
+        this.recycleType = recycleType;
+    }
+
     public String getDealTime() {
         return dealTime;
     }

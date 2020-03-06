@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Random;
 
 public  class RandomNo {
+
     public static String  createNo(){
         SimpleDateFormat simpleDateFormat;
         simpleDateFormat = new SimpleDateFormat("yyyyMMddHH");

@@ -7,6 +7,25 @@ import java.util.List;
  * 19/04/15 12:30
  */
 public class ChuanyunBillmaster {
+    private   String  billNo;
+    private String recycleType;
+
+    public String getRecycleType() {
+        return recycleType;
+    }
+
+    public void setRecycleType(String recycleType) {
+        this.recycleType = recycleType;
+    }
+
+    public String getBillNo() {
+        return billNo;
+    }
+
+    public void setBillNo(String billNo) {
+        this.billNo = billNo;
+    }
+
     private   String  contractNo;
     private   Integer  itemMasterId;
     private   String  warecode;
@@ -14,6 +33,18 @@ public class ChuanyunBillmaster {
     private String supplierCode;
     private String dealTime;
     private String recycleTime;
+    /**
+     * 客户code
+     * */
+    private String   clientCode;
+
+    public String getClientCode() {
+        return clientCode;
+    }
+
+    public void setClientCode(String clientCode) {
+        this.clientCode = clientCode;
+    }
 
     public String getDealTime() {
         return dealTime;

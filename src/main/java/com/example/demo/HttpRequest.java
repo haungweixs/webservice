@@ -52,9 +52,8 @@ public class HttpRequest {
 			String str= "";
 			while((str = br.readLine()) != null){
 				System.out.println(str);
-				stringBuffer .append(str );
+				stringBuffer.append(str);
 			}
-
 			result = new String(method.getResponseBody(), codePage);
 		} catch (final Exception e) {
 			throw e;
